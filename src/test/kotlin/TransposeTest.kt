@@ -16,10 +16,10 @@ internal class TransposeTest {
             Of red and gold
         """.trimIndent()
 
-        val result = Transpose(chordPatternRegex).invoke(
+        val result = Transpose.create().invoke(
             semitones = 4,
             source = autumnLeaves,
-            preferredModifier = preferredModifier
+            preferredModifier = NoteModifier.AUTO
         )
 
         val expected = """

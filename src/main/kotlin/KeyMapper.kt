@@ -1,4 +1,4 @@
-fun String.toKey(): Key? =
+fun String.toKey(): Key =
     when (this) {
         "B#", "C" -> Key.C
         "C#", "Db" -> Key.CSharp
@@ -12,20 +12,29 @@ fun String.toKey(): Key? =
         "A" -> Key.A
         "A#", "Bb" -> Key.Bb
         "B", "Cb" -> Key.B
-        else -> null
+        else -> throw InvalidKeyException(this)
     }
 
-fun Key.toNoteName(preferredModifier: Modifier = Modifier.SHARP): String =
+fun String.toKeyOrNull(): Key? {
+    val result = try {
+        toKey()
+    } catch (e: InvalidKeyException) {
+        null
+    }
+    return result
+}
+
+fun Key.toNoteName(preferredModifier: NoteModifier = NoteModifier.SHARP): String =
     when (preferredModifier) {
-        Modifier.AUTO -> {
-            if (this == Key.B)
+        NoteModifier.AUTO -> {
+            if (this == Key.Bb)
                 toFlatNoteName()
             else {
                 toSharpNoteName()
             }
         }
-        Modifier.SHARP -> toSharpNoteName()
-        Modifier.FLAT -> toFlatNoteName()
+        NoteModifier.SHARP -> toSharpNoteName()
+        NoteModifier.FLAT -> toFlatNoteName()
     }
 
 private fun Key.toSharpNoteName() =

@@ -1,14 +1,14 @@
 import java.util.regex.Pattern
 
-class Transpose(pattern: String = fileChordsQuery) {
+class Transpose private constructor(pattern: String = fileChordsQuery) {
 
     private val chordsPattern: Pattern = Pattern.compile(pattern)
-    private val transposeChord = TransposeChord()
+    private val transposeChord = TransposeChord.create()
 
     operator fun invoke(
         semitones: Semitones,
         source: CharSequence,
-        preferredModifier: Modifier
+        preferredModifier: NoteModifier
     ): String =
         chordsPattern
             .matcher(source)
@@ -17,5 +17,12 @@ class Transpose(pattern: String = fileChordsQuery) {
     companion object {
         const val fileChordsQuery =
             "[A-G](##?|bb?)?((m|\\+|dim|º)?\\d?\\d?M?)?(/[A-G](##?|bb?)?)?(\\(b5\\))?(\r?\n|( (?![A-Za-zÀ-ÿ\\d_])|\$))"
+
+        /**
+         * Static factory method.
+         *
+         * Creates a [Transpose] instance with chords pattern.
+         */
+        fun create(pattern: String = fileChordsQuery) = Transpose(pattern)
     }
 }

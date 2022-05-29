@@ -1,4 +1,4 @@
-enum class Modifier {
+enum class NoteModifier {
     AUTO,
     SHARP,
     FLAT
