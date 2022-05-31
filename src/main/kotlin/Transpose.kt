@@ -1,8 +1,6 @@
-import java.util.regex.Pattern
-
 class Transpose private constructor(pattern: String = fileChordsQuery) {
 
-    private val chordsPattern: Pattern = Pattern.compile(pattern)
+    private val chordsPattern: Regex = pattern.toRegex()
     private val transposeChord = TransposeChord.create()
 
     operator fun invoke(
@@ -11,8 +9,13 @@ class Transpose private constructor(pattern: String = fileChordsQuery) {
         preferredModifier: NoteModifier
     ): String =
         chordsPattern
-            .matcher(source)
-            .replaceAll { result -> transposeChord(result.group(), semitones, preferredModifier) }
+            .replace(source) { result ->
+                transposeChord(
+                    chord = result.value,
+                    semitones = semitones,
+                    preferredModifier = preferredModifier
+                )
+            }
 
     companion object {
         const val fileChordsQuery =
