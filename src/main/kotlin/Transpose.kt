@@ -19,7 +19,7 @@ class Transpose private constructor(pattern: String = fileChordsQuery) {
 
     companion object {
         const val fileChordsQuery =
-            "[A-G](##?|bb?)?((m|\\+|dim|º)?\\d?\\d?M?)?(/[A-G](##?|bb?)?)?(\\(b5\\))?(\r?\n|( (?![A-Za-zÀ-ÿ\\d_])|\$))"
+            "[A-G](##?|bb?)?((-|M|m|\\+|dim|º)?\\d?\\d?M?\\ ?\\d?\\d?M?)?\\+?(\\((add)?(##?|bb?)?\\d?\\d?\\+?\\ ?(##?|bb?)?\\d?\\d?\\+?\\))?(/[A-G](##?|bb?)?)?(\\(b5\\))?(\r?\n|( (?![A-Za-zÀ-ÿ\\d_])|\$))"
 
         /**
          * Static factory method.
