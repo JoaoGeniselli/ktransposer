@@ -1,5 +1,7 @@
-import junit.framework.TestCase.assertEquals
-import org.junit.Test
+package com.dosei.music.ktransposer
+
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 internal class KeyTest {
 

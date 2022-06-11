@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="transposer">
+    <output-path>$PROJECT_DIR$/out/artifacts/transposer</output-path>
+    <root id="archive" name="transposer.jar">
+      <element id="module-output" name="ktransposer" />
+    </root>
+  </artifact>
+</component>

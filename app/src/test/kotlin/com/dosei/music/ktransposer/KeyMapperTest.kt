@@ -1,7 +1,10 @@
-import NoteModifier.*
-import junit.framework.TestCase.assertEquals
-import junit.framework.TestCase.assertNull
-import org.junit.Test
+package com.dosei.music.ktransposer
+
+import com.dosei.music.ktransposer.NoteModifier.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class KeyMapperTest {
 
@@ -30,9 +33,11 @@ class KeyMapperTest {
         assertEquals(Key.B, "Cb".toKey())
     }
 
-    @Test(expected = InvalidKeyException::class)
+    @Test
     fun `test invalid key`() {
-        "X".toKey()
+        assertThrows<InvalidKeyException> {
+            "X".toKey()
+        }
     }
 
     @Test

@@ -1,3 +1,5 @@
+package com.dosei.music.ktransposer
+
 class InvalidKeyException(
     val note: String
 ) : RuntimeException() {

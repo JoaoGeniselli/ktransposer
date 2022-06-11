@@ -1,3 +1,5 @@
+package com.dosei.music.ktransposer
+
 class TransposeChord private constructor() {
 
     private val chordNotesPattern = chordNotesRegex.toRegex()

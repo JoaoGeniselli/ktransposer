@@ -1,3 +1,5 @@
+package com.dosei.music.ktransposer
+
 class Transpose private constructor(pattern: String = fileChordsQuery) {
 
     private val chordsPattern: Regex = pattern.toRegex()

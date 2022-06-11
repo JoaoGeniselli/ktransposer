@@ -1,3 +1,5 @@
+package com.dosei.music.ktransposer
+
 fun String.toKey(): Key =
     when (this) {
         "B#", "C" -> Key.C
