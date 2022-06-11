@@ -41,7 +41,7 @@ compileTestKotlin.kotlinOptions {
 
 publishing {
     val secrets = Properties().apply {
-        load(FileInputStream(file("secret.properties")))
+        load(FileInputStream(file("${rootDir}/secret.properties")))
     }
 
     repositories {
