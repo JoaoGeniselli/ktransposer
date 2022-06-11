@@ -1,2 +1,2 @@
-rootProject.name = "ktransposer"
-include("app")
+rootProject.name = "transposer"
+include("ktransposer")

@@ -10,7 +10,7 @@ plugins {
     `maven-publish`
 }
 
-group = "com.dosei.music.ktransposer"
+group = "com.dosei.music"
 version = "1.1.0"
 
 repositories {
