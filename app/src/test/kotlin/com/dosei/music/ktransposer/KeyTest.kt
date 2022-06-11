@@ -1,5 +1,6 @@
 package com.dosei.music.ktransposer
 
+import com.dosei.music.ktransposer.Key.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -7,37 +8,37 @@ internal class KeyTest {
 
     @Test
     fun `test plus`() {
-        val key = Key.C
+        val key = C
 
         val third = key + 4
         val fifth = key + 7
         val minorNinth = key + 13
 
-        assertEquals(Key.E, third)
-        assertEquals(Key.G, fifth)
-        assertEquals(Key.CSharp, minorNinth)
+        assertEquals(E, third)
+        assertEquals(G, fifth)
+        assertEquals(CSharp, minorNinth)
     }
 
     @Test
     fun `test minus`() {
-        val key = Key.C
+        val key = C
 
         val minorSeventh = key - 2
         val fifth = key - 5
         val second = key - 10
 
-        assertEquals(Key.Bb, minorSeventh)
-        assertEquals(Key.G, fifth)
-        assertEquals(Key.D, second)
+        assertEquals(Bb, minorSeventh)
+        assertEquals(G, fifth)
+        assertEquals(D, second)
     }
 
     @Test
     fun `test diff`() {
-        val key = Key.C
+        val key = C
 
-        val diffBb = key diff Key.Bb
-        val diffG = key diff Key.G
-        val diffD = key diff Key.D
+        val diffBb = key diff Bb
+        val diffG = key diff G
+        val diffD = key diff D
 
         assertEquals(10, diffBb)
         assertEquals(7, diffG)

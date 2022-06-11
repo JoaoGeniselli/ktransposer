@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
-internal class TransposeTest {
+internal class TransposeSongTest {
 
-    private val pattern = Transpose.fileChordsQuery.toPattern()
+    private val pattern = TransposeSong.chordsRegex.toPattern()
 
     @Test
     fun `test major pattern recognition`() {
@@ -202,9 +202,9 @@ internal class TransposeTest {
             Of red and gold
         """.trimIndent()
 
-        val result = Transpose.create().invoke(
+        val result = TransposeSong().invoke(
             semitones = 4,
-            source = autumnLeaves,
+            song = autumnLeaves,
             preferredModifier = NoteModifier.AUTO
         )
 

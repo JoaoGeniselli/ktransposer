@@ -1,13 +1,31 @@
 package com.dosei.music.ktransposer
 
-class TransposeChord private constructor() {
+/**
+ * Transposes a single chord.
+ *
+ * Ex.:
+ *
+ * Cm7 + 2 semitones = Dm7
+ *
+ * F#7 - 2 semitones = E7
+ *
+ * @param chordNotesPattern regex that describes how the chord's keys are found. Default value: [chordNotesRegex]
+ */
+class TransposeChord(
+    private val chordNotesPattern: Regex = chordNotesRegex.toRegex()
+) {
 
-    private val chordNotesPattern = chordNotesRegex.toRegex()
-
+    /**
+     * Invokes the chord transposition.
+     *
+     * @param chord the chord to be transposed. Ex.: "G#m7"
+     * @param semitones the transposition diff in semitones.
+     * @param preferredModifier the preferred modifier (# or b) used in the result. Default: [NoteModifier.AUTO]
+     */
     operator fun invoke(
         chord: String,
         semitones: Semitones,
-        preferredModifier: NoteModifier
+        preferredModifier: NoteModifier = NoteModifier.AUTO
     ): String =
         chordNotesPattern
             .replace(chord) { match ->
@@ -19,13 +37,6 @@ class TransposeChord private constructor() {
             }
 
     companion object {
-        private const val chordNotesRegex = "[A-G](##?|bb?)?"
-
-        /**
-         * Static factory method.
-         *
-         * Creates a [TransposeChord] instance.
-         */
-        fun create() = TransposeChord()
+        const val chordNotesRegex = "[A-G](##?|bb?)?"
     }
 }

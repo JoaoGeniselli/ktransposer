@@ -1,19 +1,22 @@
 package com.dosei.music.ktransposer
 
+import com.dosei.music.ktransposer.Key.*
+import com.dosei.music.ktransposer.NoteModifier.*
+
 fun String.toKey(): Key =
     when (this) {
-        "B#", "C" -> Key.C
-        "C#", "Db" -> Key.CSharp
-        "D" -> Key.D
-        "D#", "Eb" -> Key.DSharp
-        "Fb", "E" -> Key.E
-        "E#", "F" -> Key.F
-        "F#", "Gb" -> Key.FSharp
-        "G" -> Key.G
-        "G#", "Ab" -> Key.GSharp
-        "A" -> Key.A
-        "A#", "Bb" -> Key.Bb
-        "B", "Cb" -> Key.B
+        "B#", "C" -> C
+        "C#", "Db" -> CSharp
+        "D" -> D
+        "D#", "Eb" -> DSharp
+        "Fb", "E" -> E
+        "E#", "F" -> F
+        "F#", "Gb" -> FSharp
+        "G" -> G
+        "G#", "Ab" -> GSharp
+        "A" -> A
+        "A#", "Bb" -> Bb
+        "B", "Cb" -> B
         else -> throw InvalidKeyException(this)
     }
 
@@ -26,47 +29,47 @@ fun String.toKeyOrNull(): Key? {
     return result
 }
 
-fun Key.toNoteName(preferredModifier: NoteModifier = NoteModifier.SHARP): String =
+fun Key.toNoteName(preferredModifier: NoteModifier = AUTO): String =
     when (preferredModifier) {
-        NoteModifier.AUTO -> {
-            if (this == Key.Bb)
+        AUTO -> {
+            if (this == Bb)
                 toFlatNoteName()
             else {
                 toSharpNoteName()
             }
         }
-        NoteModifier.SHARP -> toSharpNoteName()
-        NoteModifier.FLAT -> toFlatNoteName()
+        SHARP -> toSharpNoteName()
+        FLAT -> toFlatNoteName()
     }
 
 private fun Key.toSharpNoteName() =
     when (this) {
-        Key.C -> "C"
-        Key.CSharp -> "C#"
-        Key.D -> "D"
-        Key.DSharp -> "D#"
-        Key.E -> "E"
-        Key.F -> "F"
-        Key.FSharp -> "F#"
-        Key.G -> "G"
-        Key.GSharp -> "G#"
-        Key.A -> "A"
-        Key.Bb -> "A#"
-        Key.B -> "B"
+        C -> "C"
+        CSharp -> "C#"
+        D -> "D"
+        DSharp -> "D#"
+        E -> "E"
+        F -> "F"
+        FSharp -> "F#"
+        G -> "G"
+        GSharp -> "G#"
+        A -> "A"
+        Bb -> "A#"
+        B -> "B"
     }
 
 private fun Key.toFlatNoteName(): String =
     when (this) {
-        Key.C -> "C"
-        Key.CSharp -> "Db"
-        Key.D -> "D"
-        Key.DSharp -> "Eb"
-        Key.E -> "E"
-        Key.F -> "F"
-        Key.FSharp -> "Gb"
-        Key.G -> "G"
-        Key.GSharp -> "Ab"
-        Key.A -> "A"
-        Key.Bb -> "Bb"
-        Key.B -> "B"
+        C -> "C"
+        CSharp -> "Db"
+        D -> "D"
+        DSharp -> "Eb"
+        E -> "E"
+        F -> "F"
+        FSharp -> "Gb"
+        G -> "G"
+        GSharp -> "Ab"
+        A -> "A"
+        Bb -> "Bb"
+        B -> "B"
     }

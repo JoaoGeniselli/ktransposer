@@ -1,5 +1,6 @@
 package com.dosei.music.ktransposer
 
+import com.dosei.music.ktransposer.Key.*
 import com.dosei.music.ktransposer.NoteModifier.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull
@@ -10,27 +11,27 @@ class KeyMapperTest {
 
     @Test
     fun `test successful key mapping`() {
-        assertEquals(Key.C, "B#".toKey())
-        assertEquals(Key.C, "C".toKey())
-        assertEquals(Key.CSharp, "C#".toKey())
-        assertEquals(Key.CSharp, "Db".toKey())
-        assertEquals(Key.D, "D".toKey())
-        assertEquals(Key.DSharp, "D#".toKey())
-        assertEquals(Key.DSharp, "Eb".toKey())
-        assertEquals(Key.E, "Fb".toKey())
-        assertEquals(Key.E, "E".toKey())
-        assertEquals(Key.F, "E#".toKey())
-        assertEquals(Key.F, "F".toKey())
-        assertEquals(Key.FSharp, "F#".toKey())
-        assertEquals(Key.FSharp, "Gb".toKey())
-        assertEquals(Key.G, "G".toKey())
-        assertEquals(Key.GSharp, "G#".toKey())
-        assertEquals(Key.GSharp, "Ab".toKey())
-        assertEquals(Key.A, "A".toKey())
-        assertEquals(Key.Bb, "A#".toKey())
-        assertEquals(Key.Bb, "Bb".toKey())
-        assertEquals(Key.B, "B".toKey())
-        assertEquals(Key.B, "Cb".toKey())
+        assertEquals(C, "B#".toKey())
+        assertEquals(C, "C".toKey())
+        assertEquals(CSharp, "C#".toKey())
+        assertEquals(CSharp, "Db".toKey())
+        assertEquals(D, "D".toKey())
+        assertEquals(DSharp, "D#".toKey())
+        assertEquals(DSharp, "Eb".toKey())
+        assertEquals(E, "Fb".toKey())
+        assertEquals(E, "E".toKey())
+        assertEquals(F, "E#".toKey())
+        assertEquals(F, "F".toKey())
+        assertEquals(FSharp, "F#".toKey())
+        assertEquals(FSharp, "Gb".toKey())
+        assertEquals(G, "G".toKey())
+        assertEquals(GSharp, "G#".toKey())
+        assertEquals(GSharp, "Ab".toKey())
+        assertEquals(A, "A".toKey())
+        assertEquals(Bb, "A#".toKey())
+        assertEquals(Bb, "Bb".toKey())
+        assertEquals(B, "B".toKey())
+        assertEquals(B, "Cb".toKey())
     }
 
     @Test
@@ -42,55 +43,55 @@ class KeyMapperTest {
 
     @Test
     fun `test to note or null`() {
-        assertEquals(Key.C, "C".toKeyOrNull())
+        assertEquals(C, "C".toKeyOrNull())
         assertNull("H".toKeyOrNull())
     }
 
     @Test
     fun `test map to note - AUTO`() {
-        assertEquals("C", Key.C.toNoteName(AUTO))
-        assertEquals("C#", Key.CSharp.toNoteName(AUTO))
-        assertEquals("D", Key.D.toNoteName(AUTO))
-        assertEquals("D#", Key.DSharp.toNoteName(AUTO))
-        assertEquals("E", Key.E.toNoteName(AUTO))
-        assertEquals("F", Key.F.toNoteName(AUTO))
-        assertEquals("F#", Key.FSharp.toNoteName(AUTO))
-        assertEquals("G", Key.G.toNoteName(AUTO))
-        assertEquals("G#", Key.GSharp.toNoteName(AUTO))
-        assertEquals("A", Key.A.toNoteName(AUTO))
-        assertEquals("Bb", Key.Bb.toNoteName(AUTO))
-        assertEquals("B", Key.B.toNoteName(AUTO))
+        assertEquals("C", C.toNoteName(AUTO))
+        assertEquals("C#", CSharp.toNoteName(AUTO))
+        assertEquals("D", D.toNoteName(AUTO))
+        assertEquals("D#", DSharp.toNoteName(AUTO))
+        assertEquals("E", E.toNoteName(AUTO))
+        assertEquals("F", F.toNoteName(AUTO))
+        assertEquals("F#", FSharp.toNoteName(AUTO))
+        assertEquals("G", G.toNoteName(AUTO))
+        assertEquals("G#", GSharp.toNoteName(AUTO))
+        assertEquals("A", A.toNoteName(AUTO))
+        assertEquals("Bb", Bb.toNoteName(AUTO))
+        assertEquals("B", B.toNoteName(AUTO))
     }
 
     @Test
     fun `test map to note - SHARP`() {
-        assertEquals("C", Key.C.toNoteName(SHARP))
-        assertEquals("C#", Key.CSharp.toNoteName(SHARP))
-        assertEquals("D", Key.D.toNoteName(SHARP))
-        assertEquals("D#", Key.DSharp.toNoteName(SHARP))
-        assertEquals("E", Key.E.toNoteName(SHARP))
-        assertEquals("F", Key.F.toNoteName(SHARP))
-        assertEquals("F#", Key.FSharp.toNoteName(SHARP))
-        assertEquals("G", Key.G.toNoteName(SHARP))
-        assertEquals("G#", Key.GSharp.toNoteName(SHARP))
-        assertEquals("A", Key.A.toNoteName(SHARP))
-        assertEquals("A#", Key.Bb.toNoteName(SHARP))
-        assertEquals("B", Key.B.toNoteName(SHARP))
+        assertEquals("C", C.toNoteName(SHARP))
+        assertEquals("C#", CSharp.toNoteName(SHARP))
+        assertEquals("D", D.toNoteName(SHARP))
+        assertEquals("D#", DSharp.toNoteName(SHARP))
+        assertEquals("E", E.toNoteName(SHARP))
+        assertEquals("F", F.toNoteName(SHARP))
+        assertEquals("F#", FSharp.toNoteName(SHARP))
+        assertEquals("G", G.toNoteName(SHARP))
+        assertEquals("G#", GSharp.toNoteName(SHARP))
+        assertEquals("A", A.toNoteName(SHARP))
+        assertEquals("A#", Bb.toNoteName(SHARP))
+        assertEquals("B", B.toNoteName(SHARP))
     }
 
     @Test
     fun `test map to note - FLAT`() {
-        assertEquals("C", Key.C.toNoteName(FLAT))
-        assertEquals("Db", Key.CSharp.toNoteName(FLAT))
-        assertEquals("D", Key.D.toNoteName(FLAT))
-        assertEquals("Eb", Key.DSharp.toNoteName(FLAT))
-        assertEquals("E", Key.E.toNoteName(FLAT))
-        assertEquals("F", Key.F.toNoteName(FLAT))
-        assertEquals("Gb", Key.FSharp.toNoteName(FLAT))
-        assertEquals("G", Key.G.toNoteName(FLAT))
-        assertEquals("Ab", Key.GSharp.toNoteName(FLAT))
-        assertEquals("A", Key.A.toNoteName(FLAT))
-        assertEquals("Bb", Key.Bb.toNoteName(FLAT))
-        assertEquals("B", Key.B.toNoteName(FLAT))
+        assertEquals("C", C.toNoteName(FLAT))
+        assertEquals("Db", CSharp.toNoteName(FLAT))
+        assertEquals("D", D.toNoteName(FLAT))
+        assertEquals("Eb", DSharp.toNoteName(FLAT))
+        assertEquals("E", E.toNoteName(FLAT))
+        assertEquals("F", F.toNoteName(FLAT))
+        assertEquals("Gb", FSharp.toNoteName(FLAT))
+        assertEquals("G", G.toNoteName(FLAT))
+        assertEquals("Ab", GSharp.toNoteName(FLAT))
+        assertEquals("A", A.toNoteName(FLAT))
+        assertEquals("Bb", Bb.toNoteName(FLAT))
+        assertEquals("B", B.toNoteName(FLAT))
     }
 }
