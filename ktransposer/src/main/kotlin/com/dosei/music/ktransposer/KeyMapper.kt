@@ -1,4 +1,7 @@
-fun String.toKey(): Key =
+package com.dosei.music.ktransposer
+
+
+fun String.toKeyOrNull(): Key? =
     when (this) {
         "B#", "C" -> Key.C
         "C#", "Db" -> Key.CSharp
@@ -12,19 +15,12 @@ fun String.toKey(): Key =
         "A" -> Key.A
         "A#", "Bb" -> Key.Bb
         "B", "Cb" -> Key.B
-        else -> throw InvalidKeyException(this)
+        else -> null
     }
 
-fun String.toKeyOrNull(): Key? {
-    val result = try {
-        toKey()
-    } catch (e: InvalidKeyException) {
-        null
-    }
-    return result
-}
+fun String.toKey(): Key = toKeyOrNull() ?: throw InvalidKeyException(this)
 
-fun Key.toNoteName(preferredModifier: NoteModifier = NoteModifier.SHARP): String =
+fun Key.toNoteName(preferredModifier: NoteModifier = NoteModifier.AUTO): String =
     when (preferredModifier) {
         NoteModifier.AUTO -> {
             if (this == Key.Bb)

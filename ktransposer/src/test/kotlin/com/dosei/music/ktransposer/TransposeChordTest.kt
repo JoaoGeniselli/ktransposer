@@ -1,11 +1,13 @@
-import junit.framework.TestCase.assertEquals
-import org.junit.Test
+package com.dosei.music.ktransposer
+
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 internal class TransposeChordTest {
 
     @Test
     fun `test transpose chord negative`() {
-        val result = TransposeChord.create().invoke(
+        val result = TransposeChord().invoke(
             chord = "Cm7/Bb",
             semitones = -2,
             preferredModifier = NoteModifier.AUTO
@@ -15,12 +17,11 @@ internal class TransposeChordTest {
 
     @Test
     fun `test transpose chord positive`() {
-        val result = TransposeChord.create().invoke(
+        val result = TransposeChord().invoke(
             chord = "D#7+",
             semitones = 5,
             preferredModifier = NoteModifier.AUTO
         )
         assertEquals("G#7+", result)
     }
-
 }
