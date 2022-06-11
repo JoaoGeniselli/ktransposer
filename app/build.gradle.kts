@@ -1,8 +1,10 @@
+import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("java")
     kotlin("jvm") version "1.7.0"
+    id("io.gitlab.arturbosch.detekt") version "1.21.0-RC1"
     `maven-publish`
 }
 
@@ -50,3 +52,17 @@ publishing {
         }
     }
 }
+
+detekt {
+    buildUponDefaultConfig = true
+    allRules = false
+    source = files("src/main/kotlin",)
+
+
+}
+
+tasks.withType<Detekt>().configureEach {
+    exclude("**/test/**","**/*.Test.kt")
+}
+
+tasks.getByName("check").dependsOn(tasks.getByName("detekt"))
