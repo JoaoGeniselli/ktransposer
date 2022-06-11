@@ -1,5 +1,7 @@
 import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.io.FileInputStream
+import java.util.Properties
 
 plugins {
     id("java")
@@ -35,14 +37,20 @@ compileTestKotlin.kotlinOptions {
     jvmTarget = "1.8"
 }
 
+
+
 publishing {
+    val secrets = Properties().apply {
+        load(FileInputStream(file("secret.properties")))
+    }
+
     repositories {
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/JoaoGeniselli/ktransposer")
             credentials {
-                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
+                username = secrets["publishUser"] as String
+                password = secrets["publishToken"] as String
             }
         }
     }
@@ -56,13 +64,11 @@ publishing {
 detekt {
     buildUponDefaultConfig = true
     allRules = false
-    source = files("src/main/kotlin",)
-
-
+    source = files("src/main/kotlin")
 }
 
 tasks.withType<Detekt>().configureEach {
-    exclude("**/test/**","**/*.Test.kt")
+    exclude("**/test/**", "**/*.Test.kt")
 }
 
 tasks.getByName("check").dependsOn(tasks.getByName("detekt"))
